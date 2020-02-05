@@ -20,13 +20,27 @@ public class JobTest {
 
     @Test
     public void testSettingJobId () {
+
         Assert.assertFalse(testJobOne.getId() == testJobTwo.getId());
     }
 
     @Test
     public void testJobConstructorSetsAllFields () {
         Job newJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        Assert.assertEquals(newJob instanceof Employer);
+
+        Assert.assertEquals("Product tester", newJob.getName());
+        Assert.assertEquals("ACME", newJob.getEmployer().getValue());
+        Assert.assertEquals("Desert", newJob.getLocation().getValue());
+        Assert.assertEquals("Quality control", newJob.getPositionType().getValue());
+        Assert.assertEquals("Persistence", newJob.getCoreCompetency().getValue());
+    }
+
+
+    @Test
+    public void testJobsForEquality () {
+        Job codingJobOne = new Job ("Front End Engineer", new Employer("VML"), new Location("Kansas City"), new PositionType("UX"), new CoreCompetency("Creativity"));
+        Job codingJobTwo = new Job ("Front End Engineer", new Employer("VML"), new Location("Kansas City"), new PositionType("UX"), new CoreCompetency("Creativity"));
+        Assert.assertFalse(codingJobOne.getId() == codingJobTwo.getId());
     }
 
 }
