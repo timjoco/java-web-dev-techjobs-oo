@@ -60,8 +60,8 @@ public class JobTest {
 
     @Test
     public void testForEmptyField () {
-        Job testJob =  new Job("Vacuum Cleaner Salesman", new Employer("Hoover"), new Location("Philadelphia"), new PositionType("Sales"), new CoreCompetency("Customer Service"));
-        String labels = "\nID: " + " " + " \nName: " + " " + " \nEmployer: " + " " + " \nLocation: " + " " + " \nPosition Type: " + " " + " \nCore Competency: " + " " + "\n";
+        Job testJob =  new Job("Vacuum Cleaner Salesman", new Employer(null), new Location("Philadelphia"), new PositionType("Sales"), new CoreCompetency("Customer Service"));
+        String labels = "\nID: " + testJob.getId()+ "\nName: " + testJob.getName() + "\nEmployer: " + testJob.getEmployer() + "\nLocation: " + testJob.getLocation() + "\nPosition Type: " + testJob.getPositionType() + "\nCore Competency: " + testJob.getCoreCompetency() + "\n";
         Assert.assertFalse(testJob.toString().equals(labels));
     }
 

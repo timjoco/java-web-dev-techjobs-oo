@@ -33,8 +33,17 @@ public class Job {
 
     }
 
+//    private String fieldCoalesce (String input) {
+//        if (input != null) {
+//            return input;
+//        } else {
+//            return "Data not available";
+//        }
+//    }
+
+
     public String toString () {
-        return "\nID: " + id + " \nName: " + name + " \nEmployer: " + employer.getValue() + " \nLocation: " + location.getValue() + " \nPosition Type: " + positionType.getValue() + " \nCore Competency: " + coreCompetency.getValue() + "\n";
+        return "\nID: " + id + "\nName: " + name + "\nEmployer: " + employer.getValue() + "\nLocation: " + location.getValue() + "\nPosition Type: " + positionType.getValue() + "\nCore Competency: " + coreCompetency.getValue() + "\n";
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
@@ -63,7 +72,11 @@ public class Job {
     }
 
     public String getName() {
-        return name;
+        if (name != null) {
+            return name;
+        } else {
+            return "Date not available";
+        }
     }
 
     public void setName(String name) {
