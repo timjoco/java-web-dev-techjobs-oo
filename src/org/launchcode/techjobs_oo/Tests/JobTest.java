@@ -16,39 +16,34 @@ public class JobTest {
 
     @Before
     public void createJobObject() {
-        testJobOne = new Job();
-        testJobTwo = new Job();
+        testJobOne = new Job("Barista", new Employer("Broadway Coffee"), new Location("Westport"), new PositionType("Front of house"), new CoreCompetency("Friendliness"));
+        testJobTwo = new Job("Loan Processor", new Employer("nbkc Bank"), new Location("Waldo"), new PositionType("Financial sector"), new CoreCompetency("Detail Oriented"));
     }
 
     @Test
     public void testSettingJobId() {
-
-        Assert.assertFalse(testJobOne.getId() == testJobTwo.getId());
+        Assert.assertEquals(testJobOne.getId(), testJobTwo.getId(), 1);
     }
 
     @Test
     public void testJobConstructorSetsAllFields() {
-        Job newJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-
-        Assert.assertEquals("Product tester", newJob.getName());
-        Assert.assertEquals("ACME", newJob.getEmployer().getValue());
-        Assert.assertEquals("Desert", newJob.getLocation().getValue());
-        Assert.assertEquals("Quality control", newJob.getPositionType().getValue());
-        Assert.assertEquals("Persistence", newJob.getCoreCompetency().getValue());
+        Assert.assertEquals("Barista", testJobOne.getName());
+        Assert.assertEquals("Broadway Coffee", testJobOne.getEmployer().getValue());
+        Assert.assertEquals("Westport", testJobOne.getLocation().getValue());
+        Assert.assertEquals("Front of house", testJobOne.getPositionType().getValue());
+        Assert.assertEquals("Friendliness", testJobOne.getCoreCompetency().getValue());
     }
 
 
     @Test
     public void testJobsForEquality() {
-        Job codingJobOne = new Job("Front End Engineer", new Employer("VML"), new Location("Kansas City"), new PositionType("UX"), new CoreCompetency("Creativity"));
-        Job codingJobTwo = new Job("Front End Engineer", new Employer("VML"), new Location("Kansas City"), new PositionType("UX"), new CoreCompetency("Creativity"));
-        Assert.assertFalse(codingJobOne.getId() == codingJobTwo.getId());
+        Assert.assertFalse(testJobOne.getId() == testJobTwo.getId());
     }
 
     @Test
     public void testForBlanks () {
         Job codingJobThree = new Job("Back End Engineer", new Employer("nbkc Bank"), new Location("Kansas City"), new PositionType("Java Developer"), new CoreCompetency("Analytical thinking"));
-        Assert.assertTrue(codingJobThree.toString().startsWith("\n") == codingJobThree.toString().endsWith("\n"));
+        Assert.assertTrue(testJobOne.toString().startsWith("\n") == testJobTwo.toString().endsWith("\n"));
     }
 
     @Test
